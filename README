@@ -1,3 +1,6 @@
+# dashboard-elasticsearch
+Dockerfile per l'immagine ElasticSearch della Dashboard
+
 #BUILD IMAGE
 docker build -t elastic:1.7 .
 
