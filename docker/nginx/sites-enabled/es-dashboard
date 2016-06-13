@@ -1,0 +1,9 @@
+server {
+    server_name es-dashboard.prod.sardegnaturismocloud.it;
+
+    location / {
+    	auth_basic "Kibana";
+        auth_basic_user_file htpasswd.prod;
+        proxy_pass http://es_dashboard_prod/;
+    }
+}
