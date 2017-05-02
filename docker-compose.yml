@@ -8,10 +8,14 @@ elasticsearch:
   volumes:
     - "/data/backup:/backup"
     - "./docker/elasticsearch/elasticsearch.yml:/conf/elasticsearch.yml"
+  restart: always
+
 kibana:
   image: kibana:4.1.8
   links:
     - elasticsearch
+  restart: always
+
 proxy:
   image: wellnetimages/nginx-proxy:latest
   links:
@@ -23,3 +27,4 @@ proxy:
     - "./docker/nginx/proxy.conf:/etc/nginx/proxy.conf"
     - "./docker/nginx/sites-enabled:/etc/nginx/sites-enabled"
     - "/data/passwords/htpasswd.prod:/etc/nginx/htpasswd.prod"
+  restart: always
