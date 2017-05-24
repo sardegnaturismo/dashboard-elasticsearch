@@ -1,13 +1,17 @@
 elasticsearch:
   image: sardegnaturismo/dashboard-elasticsearch:1.7
   environment:
-    NODE_NAME: "Elastic_1"
-    PLUGINS: "elasticsearch/marvel/latest,mobz/elasticsearch-head"
+    NODE_NAME: "Elastic_Node1"
+    CLUSTER: "dashboard-sired"
+    PLUGINS: "elasticsearch/marvel/latest,mobz/elasticsearch-head,org.codelibs/elasticsearch-reindexing/1.7.0"
+    ES_HEAP_SIZE: "24g"
   ports:
     - "9200:9200"
+    - "9300:9300"
   volumes:
     - "/data/backup:/backup"
     - "./docker/elasticsearch/elasticsearch.yml:/conf/elasticsearch.yml"
+    - "/data_disk1/elasticsearch:/data"
   restart: always
 
 kibana:
